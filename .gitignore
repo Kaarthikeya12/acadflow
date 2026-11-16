@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+npm-debug.log*
+.pnpm-store/
+
+# next.js
+.next/
+out/
+next-env.d.ts
+*.tsbuildinfo
+
+# local environment / secrets
+.env
+.env.*
+!.env.example
+
+# project-local PostgreSQL cluster
+.pgdata/
+.pglog/
+
+# uploaded submission files (FILE_STORAGE_PATH)
+.storage/
+
+# OS noise
+.DS_Store

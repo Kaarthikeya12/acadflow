@@ -1,0 +1,192 @@
+@import 'tailwindcss';
+
+/* AcadFlow design tokens — docs/DESIGN.md §2 */
+:root {
+  --ink: #111111;
+  --paper: #ffffff;
+  --surface: #fafaf8;
+  --surface-strong: #f4f3ee;
+  --muted: #6b6b6b;
+  --line: #d8d8d3;
+  --line-strong: #b9b8b1;
+  --accent-yellow: #ffc928;
+  --accent-orange: #ff7a1a;
+  --accent-red: #e83b2e;
+  --success: #247a4b;
+  --warning: #a65b00;
+  --danger: #b42318;
+  --info: #2457a6;
+
+  --font-sans:
+    'Inter', 'Inter var', 'Segoe UI Variable', 'Segoe UI', ui-sans-serif, system-ui,
+    -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-display:
+    'Space Grotesk', 'Satoshi', 'Segoe UI Variable Display', 'Segoe UI', ui-sans-serif,
+    system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono:
+    'JetBrains Mono', 'SFMono-Regular', ui-monospace, 'Cascadia Code', Menlo, Consolas,
+    monospace;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-strong: var(--surface-strong);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-red: var(--accent-red);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --font-sans: var(--font-sans);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  border-color: var(--line);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: 'cv11', 'ss01';
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--accent-yellow);
+  color: var(--ink);
+}
+
+h1,
+h2,
+h3,
+h4,
+.display {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
+a,
+button,
+input,
+select,
+textarea,
+summary {
+  outline-color: var(--accent-orange);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-orange);
+  outline-offset: 2px;
+}
+
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.accent-rule {
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--accent-yellow) 0%,
+    var(--accent-yellow) 34%,
+    var(--accent-orange) 34%,
+    var(--accent-orange) 67%,
+    var(--accent-red) 67%,
+    var(--accent-red) 100%
+  );
+}
+
+.accent-bar {
+  display: inline-block;
+  height: 0.55rem;
+  width: 4.5rem;
+  background: linear-gradient(
+    90deg,
+    var(--accent-yellow),
+    var(--accent-orange) 55%,
+    var(--accent-red)
+  );
+}
+
+.dot-field {
+  background-image: radial-gradient(circle at 1px 1px, var(--line-strong) 1px, transparent 0);
+  background-size: 14px 14px;
+}
+
+.dot-field-faint {
+  background-image: radial-gradient(circle at 1px 1px, var(--line) 1px, transparent 0);
+  background-size: 18px 18px;
+}
+
+.paper-grid {
+  background-color: var(--surface);
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+.band-muted {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 201, 40, 0.16),
+    rgba(255, 122, 26, 0.08) 50%,
+    transparent
+  );
+}
+
+.hairline {
+  border-top: 1px solid var(--line);
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.text-pretty {
+  text-wrap: pretty;
+}
+
+/* Details/summary based disclosure used for inline forms. */
+details.disclosure > summary {
+  cursor: pointer;
+  list-style: none;
+}
+details.disclosure > summary::-webkit-details-marker {
+  display: none;
+}
+details.disclosure[open] .disclosure-chevron {
+  transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
